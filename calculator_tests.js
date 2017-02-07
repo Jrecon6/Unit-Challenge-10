@@ -69,6 +69,8 @@ QUnit.test( "clear test", function( assert ) {
 });
 
 //US8: Bug Alert! There is a bug in the calculator app! As a careless user I want to be told that I just tried to divide by zero, which I should be told is not allowed.
+QUnit.test("return function to zero", function (assert) {
+addDigit})
 
 
 //US9: Bug Alert! As an easily confused user I don't want to be able to type numbers into the screen that causes some of the numbers to disappear off the screen, thus confusing me about what I actually typed.
