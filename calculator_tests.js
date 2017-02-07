@@ -10,11 +10,11 @@ QUnit.test( "Add digits test", function( assert ) {
 QUnit.test( "Add decimal test", function( assert ) {
     addDecimal();
     addDigit('2');
-    addDecimal();
     assert.equal(document.getElementById("screen").value, "0.2", "Passed - Expected 0.2");
     allClear()
 });
 //US1: As a user, I want to be able to press a button and change the sign of the current number that I have inputted into the calculator.
+<<<<<<< HEAD
 Qunit.test( "Change the sign of current number", function(assert) {
     addDigit('1');
     changeSign();
@@ -23,6 +23,15 @@ Qunit.test( "Change the sign of current number", function(assert) {
     allClear();
 });
 
+=======
+
+QUnit.test( "change sign test", function( assert ) {
+    addDigit('2');
+    changeSign();
+    assert.equal(document.getElementById("screen").value, "-2", "Passed - Expected -2");
+    allClear()
+});
+>>>>>>> UC10/master
 //US2: As a user I want to be able to press a button and change the inputed number on the calculator's screen to change to a percentage.
 
 
