@@ -20,14 +20,7 @@ function displayCurrentInput() {
 }
 
 // Adds a digit to the current input
-function addDigit(dig) {
-    if ((eval(currentInput) == 0) && (currentInput.indexOf(".") == -1)) {
-        currentInput = dig;
-    } else {
-        currentInput = currentInput + dig;
-    }
-    displayCurrentInput();
-}
+function addDigit(dig) {     if (currentInput.length > 11) {         document.getElementById('screen').value = "Too Many Numbers!";         currentInput = "0";     } else {          if ((eval(currentInput) == 0) && (currentInput.indexOf(".") == -1)) {         currentInput = dig;       } else {         currentInput = currentInput + dig;       }     displayCurrentInput();     }                    }
 
 // Adds a decimal to the current input
 function addDecimal() {
@@ -47,7 +40,7 @@ function addDecimal() {
 function allClear() {
     currentInput = "0";
     operator = 0;                //clear operator
-    memory = "0";                  //clear memory
+    memory = "0";                //clear memory
     displayCurrentInput();
 }
 
@@ -66,56 +59,63 @@ function storeOperator(op) {
 // Calculate using operator, the memory and what is current
 function calculate() {
     if (operator == 1) { currentInput = eval(memory) * eval(currentInput); };
-    if (operator == 2) { currentInput = eval(memory) / eval(currentInput); };
+    if (operator == 2) if ( eval(currentInput) == 0) {
+        currentInput = "ERROR";
+    }else{
+        currentInput = eval(memory) / eval(currentInput); };
     if (operator == 3) { currentInput = eval(memory) + eval(currentInput); };
     if (operator == 4) { currentInput = eval(memory) - eval(currentInput); };
 
     operator = 0;                //clear operator
-    memory    = "0";              //clear memory
+    memory  = "0";              //clear memory
     displayCurrentInput();
 }
 
 // Change the sign of the current input
 function changeSign() {
-currentInput = currentInput * -1;
-displayCurrentInput();
+   currentInput = currentInput*(-1);
+   displayCurrentInput();
 }
 
+
 // Clear the current input back to 0
-function clearStuff() {
-currentInput = "0";
-displayCurrentInput();
+function clears() {
+    currentInput = "0";
+    displayCurrentInput();
 }
 
 // Change the current input to a percentage
 function percentage() {
-currentInput = currentInput / 100;
-displayCurrentInput();
+    currentInput = currentInput/(100);
+    displayCurrentInput();
 }
 
 // Calculate the factorial of the current input
 function factorial() {
-var x = currentInput ;
-for (i = 1; i < x ; i++)
-currentInput = currentInput * (x - i)
-displayCurrentInput();
+    var input = currentInput;
+    var x = input;
+    for (i = input-1; i > 1; i--) {
+        x = x*i;
+    }
+    currentInput = x;
+    displayCurrentInput();
 }
 
 // Calculate the square of the current input
 function square() {
-currentInput = currentInput * currentInput;
-displayCurrentInput();
-
+    currentInput = currentInput*(currentInput);
+    displayCurrentInput();
 }
 
 // Calculate the square root of the current input
 function squareRoot() {
-currentInput = Math.sqrt(currentInput);
-displayCurrentInput();
+    x = currentInput;
+    currentInput = Math.sqrt(x);
+    displayCurrentInput();
 }
 
 // Calculate the inverse of the current input
 function inverse() {
-currentInput = 1 / currentInput;
-displayCurrentInput();
+currentInput = 1/currentInput;
+    displayCurrentInput();
 }

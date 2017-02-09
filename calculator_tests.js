@@ -63,14 +63,25 @@ QUnit.test( "square test", function( assert ) {
 //US7: As a user who sometimes makes mistakes when pressing buttons on the keypad, I want to be able to press a button that clears my current input, but not the stored procedure.
 QUnit.test( "clear test", function( assert ) {
     addDigit('16');
-    clearStuff();
+    allClear();
     assert.equal(document.getElementById("screen").value, "0", "Passed - Expected 0");
     allClear()
 });
 
 //US8: Bug Alert! There is a bug in the calculator app! As a careless user I want to be told that I just tried to divide by zero, which I should be told is not allowed.
-QUnit.test("return function to zero", function (assert) {
-addDigit})
-
+QUnit.test( "Divide By Zero Test", function( assert) {
+    addDigit('2');
+    storeOperator('/');
+    addDigit('0');
+    calculate();
+    assert.equal(document.getElementById("screen").value, "ERROR", "Passed - Expected ERROR");
+    allClear();
+})
 
 //US9: Bug Alert! As an easily confused user I don't want to be able to type numbers into the screen that causes some of the numbers to disappear off the screen, thus confusing me about what I actually typed.
+QUnit.test( "Too many numbers test" , function( assert ) {
+    addDigit('999999999999');
+    addDigit('9');
+    assert.equal(document.getElementById("screen").value, "Too Many Numbers!", "Passed - Expected Too Many Numbers!");
+    allClear();
+})
